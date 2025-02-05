@@ -1,4 +1,4 @@
-# Edytor WYSIWYG
+# WYSIWYG__cleaner
 
 ## Opis
 Edytor WYSIWYG umożliwia użytkownikom pisanie, formatowanie i podgląd tekstu w czasie rzeczywistym. Obsługuje podstawowe formatowanie, dodawanie list i linków.
