@@ -36,4 +36,6 @@ Nie wymaga instalacji – wystarczy otworzyć plik `index.html` w przeglądarce.
 ## Autor
 Marcin Ulezalka
 
-[(https://github.com/marcinulezalka/WYSIWYG/blob/main/github_logo.png)](https://github.com/marcinulezalka/WYSIWYG.git)
+
+<a href="https://github.com/marcinulezalka/magicWYSIWYG.git"><img src="https://github.com/marcinulezalka/magicWYSIWYG/blob/main/github.png?raw=true" style="width:25px;"></a>
+
