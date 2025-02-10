@@ -29,7 +29,7 @@
                 <i class="bi bi-clipboard"></i>
             </button>
 
-            <button type="button" id="pBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Akapit">
+            <button type="button" id="pBtn" class="btn btn-primary mx-1 d-none" data-bs-toggle="tooltip" title="Akapit">
                 <i class="bi bi-type" style="font-size: 1.5rem; "></i>
             </button>
             <button type="button" id="headerBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Nagłówek">
@@ -38,7 +38,12 @@
             <button type="button" id="boldBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Pogrubienie">
                 <i class="bi bi-type-bold" style="font-size: 1.5rem; "></i>
             </button>
-
+            <button type="button" id="setBoldGreenColorBtn" class="btn btn-outline-primary mx-1 p-1 px-2"  data-bs-toggle="tooltip" title="Kolor pogrubiony #008000">
+                <i class="bi bi-type-bold" style="font-size: 1.5rem; color:#008000"></i>
+            </button>
+            <button type="button" id="setBoldGrayColorBtn" class="btn btn-outline-primary mx-1 p-1 px-2" data-bs-toggle="tooltip" title="Kolor pogrubiony #444444">
+                <i class="bi bi-type-bold" style="font-size: 1.5rem; color:#444444"></i>
+            </button>
             <button type="button" id="linkBtn" class="btn btn-primary  mx-1" data-bs-toggle="tooltip" title="Dodaj link">
                 <i class="bi bi-link-45deg" style="font-size: 1.5rem; "></i>
             </button>
@@ -56,13 +61,16 @@
                 <i class="bi bi-code-slash" style="font-size: 1.5rem; "></i>
             </button>
 
-            <input type="color" id="colorPicker" value="#008000" class="form-control form-control-color ms-3 me-1 h-100" title="Wybierz kolor">
+            <input type="color" id="colorPicker" value="#008000" class="form-control form-control-color ms-3 me-1 h-100 d-none" title="Wybierz kolor">
             <button type="button" id="setGreenColorBtn" class="btn btn-light mx-1 p-1 px-2" data-bs-toggle="tooltip" title="Kolor #008000">
                 <i class="bi bi-square-fill" style="font-size: 1.7rem; color:#008000"></i>
             </button>
+
+
             <button type="button" id="setGrayColorBtn" class="btn btn-light mx-1 p-1 px-2" data-bs-toggle="tooltip" title="Kolor #444444">
                 <i class="bi bi-square-fill" style="font-size: 1.7rem; color:#444444"></i>
             </button>
+
         </div>
     </div>
     <div class="row">
@@ -309,6 +317,44 @@
                 $('#content').trigger('input');
             }
         });
+
+        $('#setBoldGreenColorBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var greenColor = "#008000"; // Stały kolor zielony
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie zaznaczonego tekstu w kolorze #008000 i pogrubienie
+                $('#content').val(before + `<b><span style="color:${greenColor};">${selected}</span></b>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#setBoldGrayColorBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var grayColor = "#444444"; // Stały kolor szary
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie zaznaczonego tekstu w kolorze #444444 i pogrubienie
+                $('#content').val(before + `<b><span style="color:${grayColor};">${selected}</span></b>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+
 
     });
 </script>
