@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='red' class='bi bi-rocket-takeoff-fill' viewBox='0 0 16 16'%3E%3Cpath d='M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.6 3.6 0 0 0-.108-.563 2 2 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2 2 0 0 0-.16-.045 4 4 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.55 2.55 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361s.437 1.732-.36 2.531Z'/%3E%3Cpath d='M5.205 10.787a7.6 7.6 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925'/%3E%3C/svg%3E">
+
+    <title>CLEAN TEKST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .full-height {
+            height: 85vh;
+            min-height: 600px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container-fluid p-3">
+    <div class="row">
+        <div class="col-md-12 mt-2 mb-2 w-auto d-flex justify-content-center">
+            <button type="button" id="saveBtn" class="btn btn-outline-primary  mx-1" style="font-size: 1.5rem; " data-bs-toggle="tooltip" title="Pobierz">
+                <i class="bi bi-download"></i>
+            </button>
+            <button type="button" id="copyBtn" class="btn btn-outline-primary mx-1" style="font-size: 1.5rem; " data-bs-toggle="tooltip" title="Kopiuj">
+                <i class="bi bi-clipboard"></i>
+            </button>
+
+            <button type="button" id="pBtn" class="btn btn-primary mx-1 d-none" data-bs-toggle="tooltip" title="Akapit">
+                <i class="bi bi-type" style="font-size: 1.5rem; "></i>
+            </button>
+            <button type="button" id="headerBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Nagłówek">
+                <i class="bi bi-type-h1" style="font-size: 1.5rem; "></i>
+            </button>
+            <button type="button" id="boldBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Pogrubienie">
+                <i class="bi bi-type-bold" style="font-size: 1.5rem; "></i>
+            </button>
+            <button type="button" id="setBoldGreenColorBtn" class="btn btn-outline-primary mx-1 p-1 px-2"  data-bs-toggle="tooltip" title="Kolor pogrubiony #008000">
+                <i class="bi bi-type-bold" style="font-size: 1.5rem; color:#008000"></i>
+            </button>
+            <button type="button" id="setBoldGrayColorBtn" class="btn btn-outline-primary mx-1 p-1 px-2" data-bs-toggle="tooltip" title="Kolor pogrubiony #444444">
+                <i class="bi bi-type-bold" style="font-size: 1.5rem; color:#444444"></i>
+            </button>
+            <button type="button" id="linkBtn" class="btn btn-primary  mx-1" data-bs-toggle="tooltip" title="Dodaj link">
+                <i class="bi bi-link-45deg" style="font-size: 1.5rem; "></i>
+            </button>
+            <button type="button" id="removeLinkBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Usuń link">
+                <i class="bi bi-eraser" style="font-size: 1.5rem; "></i>
+            </button>
+            <button type="button" id="ulBtn" class="btn btn-primary  mx-1" data-bs-toggle="tooltip" title="Lista punktowana">
+                <i class="bi bi-list-ul" style="font-size: 1.5rem; "></i>
+            </button>
+            <button type="button" id="olBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Lista numerowana">
+                <i class="bi bi-list-ol" style="font-size: 1.5rem; "></i>
+            </button>
+
+            <button type="button" id="clearHtmlBtn" class="btn btn-primary mx-1" data-bs-toggle="tooltip" title="Usuń formatowanie">
+                <i class="bi bi-code-slash" style="font-size: 1.5rem; "></i>
+            </button>
+
+            <input type="color" id="colorPicker" value="#008000" class="form-control form-control-color ms-3 me-1 h-100 d-none" title="Wybierz kolor">
+            <button type="button" id="setGreenColorBtn" class="btn btn-light mx-1 p-1 px-2" data-bs-toggle="tooltip" title="Kolor #008000">
+                <i class="bi bi-square-fill" style="font-size: 1.7rem; color:#008000"></i>
+            </button>
+
+
+            <button type="button" id="setGrayColorBtn" class="btn btn-light mx-1 p-1 px-2" data-bs-toggle="tooltip" title="Kolor #444444">
+                <i class="bi bi-square-fill" style="font-size: 1.7rem; color:#444444"></i>
+            </button>
+
+        </div>
+    </div>
+    <div class="row">
+        <!-- Lewa sekcja (Edytor) -->
+        <div class="col-md-6 d-flex flex-column" >
+            <textarea id="content" class="form-control full-height shadow-sm" placeholder="Wpisz treść..."></textarea>
+        </div>
+
+        <!-- Prawa sekcja (Podgląd) -->
+        <div class="col-md-6 d-flex flex-column" >
+            <div id="preview" class="form-control flex-grow-1 full-height shadow-sm"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        function autoLink(text) {
+            var urlPattern = /(https?:\/\/[^\s<]+)/g;
+            return text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+        }
+
+        $('#content').on('input', function() {
+            var content = $(this).val();
+            content = autoLink(content).replace(/\n/g, '<br>');
+            $('#preview').html(`<span style="font-family:Verdana; font-size:12pt; color:#444444;">` + content + `</span>`);
+        });
+
+        $('#clearHtmlBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Usunięcie znaczników HTML
+                var cleanText = $('<div>').html(selected).text();
+
+                // Wstawienie oczyszczonego tekstu
+                $('#content').val(before + cleanText + after);
+                $('#content').trigger('input');
+            }
+        });
+
+
+        function stripHtmlTags(html) {
+            var div = document.createElement("div");
+            div.innerHTML = html;
+            return div.innerText || div.textContent;
+        }
+
+        $('#pBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = stripHtmlTags(text.substring(start, end));
+                var after = text.substring(end);
+
+                $('#content').val(before + `<span style="font-size:12pt; font-family:Verdana; color:#444444;">${selected}</span>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        // Ustawienie stałego koloru #008000 po kliknięciu przycisku
+        $('#setGreenColorBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var greenColor = "#008000"; // Stały kolor zielony
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie zaznaczonego tekstu w kolorze #008000
+                $('#content').val(before + `<span style="color:${greenColor};">${selected}</span>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        // Ustawienie stałego koloru #444444 po kliknięciu przycisku
+        $('#setGrayColorBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var greenColor = "#444444"; // Stały kolor szary
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie zaznaczonego tekstu w kolorze #444444
+                $('#content').val(before + `<span style="color:${greenColor};">${selected}</span>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+
+        // Automatyczna zmiana koloru po wyborze z Color Picker
+        $('#colorPicker').on('input', function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var color = $(this).val(); // Pobiera wybrany kolor
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie wybranego koloru w zaznaczony tekst
+                $('#content').val(before + `<span style="color:${color};">${selected}</span>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+
+        $('#headerBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = stripHtmlTags(text.substring(start, end));
+                var after = text.substring(end);
+
+                $('#content').val(before + `<span style="font-size:16pt; font-family:Verdana; color:#444444; font-weight:bold;">${selected}</span>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#boldBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                $('#content').val(before + '<b>' + selected + '</b>' + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#linkBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var url = prompt("Podaj adres URL:");
+                if (url) {
+                    var text = $('#content').val();
+                    var before = text.substring(0, start);
+                    var selected = text.substring(start, end);
+                    var after = text.substring(end);
+
+                    $('#content').val(before + `<a href="${url}" target="_blank">${selected}</a>` + after);
+                    $('#content').trigger('input');
+                }
+            }
+        });
+
+        $('#removeLinkBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = stripHtmlTags(text.substring(start, end));
+                var after = text.substring(end);
+
+                $('#content').val(before + selected + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#copyBtn').click(function() {
+            navigator.clipboard.writeText($('#preview').html());
+            alert('Podgląd skopiowany do schowka!');
+        });
+
+        $('#saveBtn').click(function() {
+            var blob = new Blob([$('#preview').html()], { type: 'text/html' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'podglad.html';
+            a.click();
+        });
+
+        $('#ulBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Zamiana każdej nowej linii na element listy `<li>`
+                var listItems = selected.split('\n').map(item => `<li>${item}</li>`).join('');
+                var listHtml = `<ul>${listItems}</ul>`;
+
+                $('#content').val(before + listHtml + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#olBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Zamiana każdej nowej linii na element listy `<li>` w numerowanej `<ol>`
+                var listItems = selected.split('\n').map(item => `<li>${item}</li>`).join('');
+                var listHtml = `<ol>${listItems}</ol>`;
+
+                $('#content').val(before + listHtml + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#setBoldGreenColorBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var greenColor = "#008000"; // Stały kolor zielony
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie zaznaczonego tekstu w kolorze #008000 i pogrubienie
+                $('#content').val(before + `<b><span style="color:${greenColor};">${selected}</span></b>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+        $('#setBoldGrayColorBtn').click(function() {
+            var textarea = $('#content')[0];
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+            var grayColor = "#444444"; // Stały kolor szary
+
+            if (start !== end) {
+                var text = $('#content').val();
+                var before = text.substring(0, start);
+                var selected = text.substring(start, end);
+                var after = text.substring(end);
+
+                // Wstawienie zaznaczonego tekstu w kolorze #444444 i pogrubienie
+                $('#content').val(before + `<b><span style="color:${grayColor};">${selected}</span></b>` + after);
+                $('#content').trigger('input');
+            }
+        });
+
+
+
+    });
+</script>
+
+</body>
+</html>
