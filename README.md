@@ -1,4 +1,7 @@
 # freshTEXT
+`What You See Is What You Get`
+---
+
 
 ## Opis
 `freshTEXT` umożliwia użytkownikom pisanie, formatowanie i podgląd tekstu w czasie rzeczywistym. Obsługuje podstawowe formatowanie, dodawanie list i linków.
@@ -25,7 +28,7 @@
     - Kopiowanie podglądu do schowka
 
 ## Instalacja
-Nie wymaga instalacji – wystarczy otworzyć plik `index.html` w przeglądarce.
+Nie wymaga instalacji – wystarczy otworzyć plik `freshTEXT.html` w przeglądarce.
 
 ## Użycie
 1. Wpisz treść w edytorze.

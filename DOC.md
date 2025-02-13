@@ -1,4 +1,6 @@
-# Docs `magicWysywig`
+# Docs freshTEXT 
+`What You See Is What You Get`
+
 
 Prosty edytor WYSIWYG `What You See Is What You Get` napisany przy użyciu HTML, CSS (Bootstrap) i jQuery. Pozwala na edycję i formatowanie tekstu w polu tekstowym oraz podgląd formatowanego wyniku w czasie rzeczywistym.
 
