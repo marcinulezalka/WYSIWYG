@@ -1,7 +1,7 @@
-# magicWYSIWYG
+# freshTEXT
 
 ## Opis
-Edytor WYSIWYG umożliwia użytkownikom pisanie, formatowanie i podgląd tekstu w czasie rzeczywistym. Obsługuje podstawowe formatowanie, dodawanie list i linków.
+`freshTEXT` umożliwia użytkownikom pisanie, formatowanie i podgląd tekstu w czasie rzeczywistym. Obsługuje podstawowe formatowanie, dodawanie list i linków.
 
 ## Technologie
 - HTML5
@@ -37,5 +37,5 @@ Nie wymaga instalacji – wystarczy otworzyć plik `index.html` w przeglądarce.
 Marcin Ulezalka
 
 
-<a href="https://github.com/marcinulezalka/magicWYSIWYG.git"><img src="https://github.com/marcinulezalka/magicWYSIWYG/blob/main/github.png?raw=true" style="width:25px;"></a>
+<a href="https://github.com/marcinulezalka/freshTEXT.git"><img src="https://github.com/marcinulezalka/freshTEXT/blob/main/github.png?raw=true" style="width:25px;"></a>
 
